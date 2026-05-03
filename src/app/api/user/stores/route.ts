@@ -24,10 +24,10 @@ export async function GET(req: Request) {
 
     const currentUserId = (session?.user as any)?.id;
 
-    const storesWithRating = stores.map((store) => {
+    const storesWithRating = stores.map((store: any) => {
       const total = store.ratings.length;
-      const sum = store.ratings.reduce((acc, r) => acc + r.value, 0);
-      const userRatingObj = store.ratings.find(r => r.userId === currentUserId);
+      const sum = store.ratings.reduce((acc: number, r: any) => acc + r.value, 0);
+      const userRatingObj = store.ratings.find((r: any) => r.userId === currentUserId);
       const userRating = userRatingObj?.value || null;
       const userComment = userRatingObj?.comment || "";
       const userOwnerReply = userRatingObj?.ownerReply || "";

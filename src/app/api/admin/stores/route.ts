@@ -16,7 +16,7 @@ export async function GET() {
     });
     
     // Calculate average rating for each store
-    const storesWithRating = await Promise.all(stores.map(async (store) => {
+    const storesWithRating = await Promise.all(stores.map(async (store: any) => {
       const avg = await db.rating.aggregate({
         where: { storeId: store.id },
         _avg: { value: true }
